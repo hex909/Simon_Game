@@ -1,7 +1,7 @@
 let gameOverText = "Game Over, Press Any Key to Restart";
 const colorCard = document.getElementsByClassName("color-card");
 const arr = [];
-nextCard()
+nextCard();
 var level = 1;
 var countArr = 0;
 
@@ -17,18 +17,19 @@ $(".color-card").on({
     let clicked = event.target;
     clicked.classList.add("clicked");
     if (level == arr.length) {
-    countArr++
-      gameCheck(arr, clicked, countArr);
+      countArr++;
+      console.log(countArr);
+      gameCheck(clicked);
     }
   },
   transitionend: function (event) {
     event.target.classList.remove("clicked");
-   },
-//   dblclick: function (event) {
-//     event.target.classList.remove("clicked");
-//     countArr++;
+  },
+  //   dblclick: function (event) {
+  //     event.target.classList.remove("clicked");
+  //     countArr++;
 
-// }
+  // }
 });
 
 function gameCheck(target) {
@@ -36,11 +37,10 @@ function gameCheck(target) {
     levelChange();
     nextCard();
   }
-  console.log(countArr)
 }
 
 function nextCard() {
-countArr = 0
+  countArr = 0;
   arr.push(Math.floor(Math.random() * 4) + 1);
 }
 
