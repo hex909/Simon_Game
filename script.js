@@ -25,11 +25,10 @@ $(".color-card").on({
   transitionend: function (event) {
     event.target.classList.remove("clicked");
   },
-  //   dblclick: function (event) {
-  //     event.target.classList.remove("clicked");
-  //     countArr++;
+    dblclick: function (event) {
+      event.target.classList.remove("clicked");
 
-  // }
+  }
 });
 
 function gameCheck(target) {
