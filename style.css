@@ -14,14 +14,17 @@ main {
   grid-template-rows: 10rem auto;
   min-height: 100vh;
   background-color: hsl(248, 53%, 18%);
+  transition: background-color .81s;
 }
 
 .level-up {
-  font-size: clamp(1.5rem, 5vw, 3.2rem);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   color: wheat;
   text-align: center;
   font-family: "Press Start 2P";
   line-height: 1.5;
+  margin-top: 2rem;
+  z-index: 1;
 }
 
 .play {
@@ -38,9 +41,11 @@ main {
   color: transparent;
   background-clip: text;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .color-contaienr {
+  margin-top: 2rem;
   width: auto;
   display: grid;
   place-items: center;
@@ -76,11 +81,12 @@ main {
 }
 
 .main-err {
-    background-color: crimson;
+    background-color: #BB2124;
 }
 
 .win {
   background-color: darkolivegreen;
+  transition-duration: .4s;
 }
 
 .showUP {
