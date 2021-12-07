@@ -1,62 +1,77 @@
-let gameOverText = "Game Over, Press Any Key to Restart";
-const colorCard = document.getElementsByClassName("color-card");
-const arr = [];
-nextCard();
+const main = document.querySelector("main");
+
+const colorNum = [];
+const colorCards = $(".color-card");
+var count = 0;
 var level = 1;
-var countArr = 0;
 
 $(document).keypress(function () {
-  if (!$(".level-up").text().startsWith("L")) {
-    $(".level-up").text(`Level 1`);
-    cardShowUp(arr);
-  }
+  clickToPlay()
 });
 
-$(".color-card").on({
-  click: function (event) {
-    let clicked = event.target;
-    clicked.classList.add("clicked");
-    if (level == arr.length) {
-      countArr++;
-      console.log(countArr);
-      gameCheck(clicked);
-    }
-  },
-  transitionend: function (event) {
-    event.target.classList.remove("clicked");
-  },
-    dblclick: function (event) {
+$(document).ready(function () {
+  $(".color-card").on({
+    click: function (event) {
+      event.target.classList.add("clicked");
+      gameCheck(event.target);
+    },
+    transitionend: function (event) {
       event.target.classList.remove("clicked");
+    },
+  });
 
-  }
+  $(".btn-play").click(function () {
+    clickToPlay()
+  });
 });
 
-function gameCheck(target) {
-  if (countArr == arr.length) {
-    levelChange();
-    nextCard();
-  }
+function addColor() {
+  colorNum.push(Math.floor(Math.random() * 4) + 1);
+  setTimeout(() => {
+    showCard();
+  }, 500);
 }
 
-function nextCard() {
-  countArr = 0;
-  arr.push(Math.floor(Math.random() * 4) + 1);
-}
-
-function cardShowUp(list) {
-  let LastNum = list[arr.length - 1];
-  for (let domElement of colorCard) {
-    if (domElement.classList[1].endsWith(LastNum)) {
-      domElement.classList.add("showUP");
-      // domElement.addEventListener()
-      domElement.addEventListener("transitionend", () => {
-        domElement.classList.remove("showUP");
+function showCard() {
+  for (let item of colorCards) {
+    let lastNum = colorNum[colorNum.length - 1];
+    if (item.classList[1].indexOf(lastNum) != -1) {
+      item.classList.add("showUP");
+      item.addEventListener("transitionend", function () {
+        item.classList.remove("showUP");
       });
     }
   }
 }
 
-function levelChange() {
-  level++;
-  $(".level-up").text(`Level ${level}`);
+function gameCheck(target) {
+  if (target.classList[1].indexOf(colorNum[count]) != -1) {
+    count++;
+  } else {
+    count = 0;
+    level = 1;
+    colorNum.splice(0, colorNum.length);
+    // addColor()
+    $(".level-up")
+      .html(`<h1 class="level-up">GameOver Press Any Key to Continue or <a class="btn-play" 
+      href="#">Click Here </a></h1>`);
+  }
+  if (count === colorNum.length && colorNum.length != 0) {
+    console.log(count, colorNum);
+    count = 0;
+    level++;
+    $(".level-up").text(`Level ${level}`);
+    addColor();
+  }
+}
+
+
+function clickToPlay() {
+  if (!$("h1").text().startsWith("L")) {
+    count = 0;
+    level = 1;
+    colorNum.splice(0, colorNum.length);
+    $("h1").text("Level 1");
+    addColor();
+  }
 }

@@ -21,6 +21,7 @@ main {
   color: wheat;
   text-align: center;
   font-family: "Press Start 2P";
+  line-height: 1.5;
 }
 
 .play {
@@ -28,6 +29,15 @@ main {
   height: 100%;
   display: grid;
   place-items: center;
+}
+
+.btn-play {
+  color: wheat;
+  border-bottom: 1px solid #fff;
+  background-image: linear-gradient(to right , red, yellow, green, blue);
+  color: transparent;
+  background-clip: text;
+  white-space: nowrap;
 }
 
 .color-contaienr {
@@ -67,6 +77,10 @@ main {
 
 .main-err {
     background-color: crimson;
+}
+
+.win {
+  background-color: darkolivegreen;
 }
 
 .showUP {
