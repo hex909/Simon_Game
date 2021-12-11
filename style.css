@@ -33,13 +33,16 @@ main {
   display: grid;
   place-items: center;
 }
-
+/* https://autoprefixer.github.io/ */
 .btn-play {
   color: wheat;
   border-bottom: 1px solid #fff;
+  background-image: -webkit-gradient(linear , left top, right top , from(red), color-stop(yellow), color-stop(green), to(blue));
+  background-image: -o-linear-gradient(left , red, yellow, green, blue);
   background-image: linear-gradient(to right , red, yellow, green, blue);
   color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   white-space: nowrap;
   cursor: pointer;
 }
