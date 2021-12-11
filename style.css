@@ -13,7 +13,7 @@ main {
   place-items: center;
   grid-template-rows: 10rem auto;
   min-height: 100vh;
-  background-color: hsl(248, 53%, 18%);
+  background-color: hsl(248, 52%, 18%);
   transition: background-color .81s;
 }
 

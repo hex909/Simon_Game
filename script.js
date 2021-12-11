@@ -1,11 +1,20 @@
 const main = document.querySelector("main");
-let audio = new Audio("./sound/lose1.wav");
-let audio1 = new Audio("./sound/click.wav");
+let loseAudio = new Audio("./sound/lose1.wav");
+let clickAudio = new Audio("./sound/click.wav");
+let showAudio = new Audio("./sound/show.wav");
 
 const colorNum = [];
 const colorCards = $(".color-card");
 var count = 0;
 var level = 1;
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").then(() => {
+    console.log("registration Done")
+  }).catch(err => {
+    console.log("Error")
+  })
+}
 
 $(document).keypress(function () {
   clickToPlay();
@@ -14,9 +23,9 @@ $(document).keypress(function () {
 $(document).ready(function () {
   $(".color-card").on({
     click: function (event) {
-      audio1.currentTime = 0
+      clickAudio.currentTime = 0
       event.target.classList.add("clicked");
-      audio1.play();
+      clickAudio.play();
       gameCheck(event.target);
     },
     transitionend: function (event) {
@@ -50,15 +59,15 @@ function showCard() {
 
 function lose() {
   document.querySelector("main").classList.add("main-err");
-  audio.currentTime = 0;
-  audio.play();
+  loseAudio.currentTime = 0;
+  loseAudio.play();
   document.querySelector("main").addEventListener("transitionend", (e) => {
     if (e.propertyName != "background-color") return;
     document.querySelector("main").classList.remove("main-err");
   });
 }
 function win() {
-  audio1.currentTime = 0;
+  clickAudio.currentTime = 0;
   document.querySelector("main").classList.add("win");
   document.querySelector("main").addEventListener("transitionend", (e) => {
     if (e.propertyName == "background-color") {

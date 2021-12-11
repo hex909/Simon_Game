@@ -1,0 +1,21 @@
+{
+    "name" : "Simon",
+    "short_name" : "Simon",
+    "start_url" : ".",
+    "background_color" : "#1c1646",
+    "theme-color" : "#1c1646",
+    "description" : "Simon is an electronic game of memory skill.",
+    "display" : "fullscreen",
+    "icons" : [
+        {
+            "src": "./icon/simon128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon/simon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
