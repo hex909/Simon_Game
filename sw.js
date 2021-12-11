@@ -7,6 +7,7 @@ self.addEventListener("install" , e => {
                 "./script.js",
                 "./icon/favicon.ico",
                 "./icon/simon128.png",
+                "./icon/simon180.png",
                 "./icon/simon512.png",
                 "./sound/click.wav",
                 "./sound/lose.wav",
